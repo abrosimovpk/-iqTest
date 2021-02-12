@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="container">
+        <div id="header">
+            <div id="logo"><img href="#" width="223"  src="img/logo.png"/></div>
+            <div id="phone">8-800-100-5005
+                </br>
+                         +7 (3452) 522-000
+            </div>
+        </div>
+        <div id="menu">
+            <table>
+                <tr>
+                    <td width="213px"><a href="#">Кредитные карты</a></td>
+                    <td bgcolor="#da511f"></td>
+                    <td width="134px"><a href="#">Вклады</a></td>
+                    <td bgcolor="#da511f"></td>
+                    <td width="183px"><a href="#">Дебетовая карта</a></td>
+                    <td bgcolor="#da511f"></td>
+                    <td width="159px"><a href="#">Страхование</a></td>
+                    <td bgcolor="#da511f"></td>
+                    <td width="121px"><a href="#">Друзья</a></td>
+                    <td bgcolor="#da511f"></td>
+                    <td width="197px"><a href="#">Интернет-банк</a></td>
+                </tr>
+            </table>
+        </div>
+        <div id="path">
+            <p>Главная-Вклады-Калькулятор</p>
+        </div>
+        <div id="content">
+            <div id="calc">
+                <table>
+                    <tr>
+                        <td><p>Калькулятор</p></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label>Дата оформления вклада</label>
+                        </td>
+                        <td>
+                            <input type="date" id="date_create">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label>Сумма вклада</label>
+                        </td>
+                        <td>
+                            <input type="number" id="sum" min="1000" max="3000000">
+
+                        </td>
+                        <td>
+                            <input type="range" id="sum_range" min="1000" max="3000000"> <br>
+                            <label>1тыс. руб</label><label id="label_text">3 000 000</label><br>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label>Срок вклада</label>
+                        </td>
+                        <td>
+                            <select size="1" id="age">
+                                <option value="1">1 год</option>
+                                <option value="2">2 года</option>
+                                <option value="3">3 года</option>
+                                <option value="4">4 года</option>
+                                <option value="5">5 лет</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label>Пополнение вклада</label>
+                        </td>
+                        <td>
+                            <input type="radio" id="reple" value="no">
+                            <label>Нет</label>
+                            <input type="radio" id="reple2" value="yes">
+                            <label>Да</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label>Сумма пополнения вклада</label>
+                        </td>
+                        <td>
+                            <input type="number" id="add" min="1000" max="3000000">
+                        </td>
+                        <td>
+                            <input type="range" id="add_range"min="1000" max="3000000"><br>
+                            <label>1тыс. руб</label><label id="label_text2">3 000 000</label>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button onclick="sendAjaxForm()" id="btn">Расчитать</button>
+                        </td>
+                        <td>
+                            <label id="res"></label>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div id="footer">
+            <div id="sub_footer">
+                <table>
+                    <tr>
+                        <td><a href="#">Кредитные карты</a></td>
+                        <td><a href="#">Вклады</a></td>
+                        <td><a href="#">Дебетовая карта</a></td>
+                        <td><a href="#">Страхование</a></td>
+                        <td><a href="#">Друзья</a></td>
+                        <td><a href="#">Интернет-банк</a></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+<script>
+
+    // события ввода сумм, бегунок
+    document.getElementById('add_range').onchange=() =>{
+        let add = document.getElementById('add');
+        add.value = document.getElementById('add_range').value;
+    }
+    document.getElementById('add').onchange=() =>{
+        let add_range = document.getElementById('add_range');
+        add_range.value = document.getElementById('add').value;
+    }
+
+    document.getElementById('sum_range').onchange=() =>{
+        let sum = document.getElementById('sum');
+        sum.value = document.getElementById('sum_range').value;
+    }
+    document.getElementById('sum').onchange=() =>{
+        let sum_range = document.getElementById('sum_range');
+        sum_range.value = document.getElementById('sum').value;
+    }
+
+    // футер
+    document.getElementById('footer').onmouseout=() =>{
+        let footer = document.getElementById('sub_footer');
+        footer.style.backgroundColor = "#231f1f";
+    }
+    document.getElementById('footer').onmouseover=() =>{
+        let footer = document.getElementById('sub_footer');
+        footer.style.backgroundColor = "#da511f";
+    }
+
+    // события формы
+    function sendAjaxForm() {
+        let xhr = new XMLHttpRequest();
+        let date_create = document.getElementById('date_create').value;
+        let sum = document.getElementById('sum').value;
+        let age = document.getElementById('age').value;
+        let reple = document.getElementById('reple').value;
+        let add = document.getElementById('add').value;
+        let body = {
+            'date_create' : encodeURIComponent(date_create),
+            'sum' : encodeURIComponent(sum),
+            'age' : encodeURIComponent(age),
+            'reple' : encodeURIComponent(reple),
+            'add' : encodeURIComponent(add)
+        }
+
+        xhr.open("POST", '/calc.php', true);
+        xhr.setRequestHeader('Content-Type', 'application/json');
+
+        xhr.onreadystatechange = function() {
+            if(xhr.readyState == XMLHttpRequest.DONE && xhr.status == 200) {
+                document.getElementById('res').innerText ='Результат:' + xhr.response + ' руб.';
+            }
+        }
+
+        xhr.send(JSON.stringify(body));
+    }
+
+</script>

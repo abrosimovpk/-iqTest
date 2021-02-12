@@ -1,0 +1,152 @@
+
+#container{
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+    width: 1024px;
+}
+#footer{
+    background-color: #231f1f;
+    height: 55px;
+    width: 1024px;
+    margin-right: auto;
+}
+#sub_footer{
+    background-color: #231f1f;
+    height: 55px;
+}
+#sub_footer table{
+    border-spacing: 0px;
+}
+#sub_footer td{
+    padding: 10px;
+}
+
+#header{
+    background-color: white;
+    height: 118px;
+    width: 1024px;
+}
+#menu{
+    background-color: #231f1f;
+    height: 44px;
+    width: 93.5%;
+    margin-right: auto;
+}
+#content{
+    height: 70vh;
+    width: 100%;
+}
+#calc{
+    width: 1024px;
+}
+#calc table{
+    background-color: #f2f2f2;
+    width: 650px;
+    height: 380px;
+}
+#calc p{
+    margin-left: 60px;
+    color: #da511f;
+    font-size: 24px;
+}
+#btn{
+    background-color: #b3ea35;
+    border-radius: 12px;
+    height: 34px;
+    width: 102px;
+}
+#footer table tr td a{
+    color: white;
+}
+#logo{
+    display:inline-block;
+    height: 118px;
+}
+#phone{
+    display:inline-block;
+    padding-top: 74px;
+    margin-left: 95px;
+    width: calc(100% - 327px);
+    height: 44px;
+    background-color: white;
+    text-align: right;
+    color : #eb5017;
+}
+#menu{
+    width: 1024px;
+}
+
+#menu table{
+    height: 100%;
+    border-spacing: 0px;
+}
+#menu tr{
+    height: 100%;
+}
+#menu td{
+    height: 44px;
+    text-align: center;
+    height: 100%;
+}
+#menu td:hover{
+    background-color: #da511f;
+}
+#menu a{
+    color: white;
+    text-align: center;
+    text-decoration: none;
+}
+#label_text{
+    text-align: right;
+    margin-left: 74px;
+}
+#label_text2{
+    text-align: right;
+    margin-left: 74px;
+}
+
+/*Chrome*/
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    input[type='range'] {
+        overflow: hidden;
+        width: 200px;
+        -webkit-appearance: none;
+        background-color: #1d1e22;
+    }
+
+    input[type='range']::-webkit-slider-runnable-track {
+        height: 10px;
+        -webkit-appearance: none;
+        color: #4d6127;
+        margin-top: -1px;
+    }
+
+    input[type='range']::-webkit-slider-thumb {
+        width: 10px;
+        -webkit-appearance: none;
+        height: 10px;
+        cursor: ew-resize;
+        background: #434343;
+        box-shadow: -80px 0 0 80px #4d6127;
+    }
+
+}
+/** FF*/
+input[type="range"]::-moz-range-progress {
+    width: 200px;
+    background-color: #4d6127;
+}
+input[type="range"]::-moz-range-track {
+    width: 200px;
+    background-color: #1d1e22;
+}
+/* IE*/
+input[type="range"]::-ms-fill-lower {
+    width: 200px;
+    background-color: #4d6127;
+}
+input[type="range"]::-ms-fill-upper {
+    width: 200px;
+    background-color: #1d1e22;
+}
